@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "turtle-id"
+version = "0.1.0"
+description = "Kaplumbaga fotograf taninma ve dogrulama sistemi"
+requires-python = ">=3.11"
+dependencies = [
+    "PySide6>=6.7",
+    "opencv-python>=4.10",
+    "torch>=2.3",
+    "torchvision>=0.18",
+    "timm>=1.0",
+    "scikit-learn>=1.5",
+    "sqlalchemy>=2.0",
+    "numpy>=1.26",
+    "loguru>=0.7",
+    "dependency-injector>=4.41",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2",
+    "pytest-qt>=4.4",
+    "pytest-cov>=5.0",
+]
+
+[project.scripts]
+turtle-id = "turtle_id.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["tests/*"]
