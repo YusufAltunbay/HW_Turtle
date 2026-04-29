@@ -108,7 +108,7 @@ class VerifyTurtleUseCase:
         if match_result.is_match:
             logger.info(
                 f"VerifyTurtleUseCase: TANIMLANDI — "
-                f"{turtle.name!r if turtle else '?'}, "
+                f"{repr(turtle.name) if turtle else '?'}, "
                 f"güven={match_result.confidence:.2%}"
             )
         else:
