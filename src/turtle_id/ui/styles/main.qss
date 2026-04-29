@@ -1,0 +1,278 @@
+/* ===== Turtle ID — Ana Stil Dosyası ===== */
+
+/* Genel */
+QMainWindow, QWidget {
+    background-color: #1e2128;
+    color: #e0e6f0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+}
+
+/* ===== Sidebar ===== */
+#sidebar {
+    background-color: #161a20;
+    min-width: 200px;
+    max-width: 200px;
+}
+
+#sidebar QLabel#logo {
+    color: #4fc3f7;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 24px 16px 8px 16px;
+}
+
+#sidebar QLabel#subtitle {
+    color: #607d8b;
+    font-size: 11px;
+    padding: 0 16px 20px 16px;
+}
+
+#nav_button {
+    background-color: transparent;
+    color: #90a4ae;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 13px;
+}
+
+#nav_button:hover {
+    background-color: #263238;
+    color: #e0e6f0;
+}
+
+#nav_button[active="true"] {
+    background-color: #1565c0;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* ===== İçerik alanı ===== */
+#content_area {
+    background-color: #1e2128;
+}
+
+/* ===== Kart ===== */
+#card {
+    background-color: #252b35;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+/* ===== Başlıklar ===== */
+QLabel#page_title {
+    color: #e0e6f0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+QLabel#section_label {
+    color: #90a4ae;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* ===== Form elemanları ===== */
+QLineEdit, QTextEdit {
+    background-color: #1e2128;
+    color: #e0e6f0;
+    border: 1px solid #37474f;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+}
+
+QLineEdit:focus, QTextEdit:focus {
+    border: 1px solid #4fc3f7;
+}
+
+QLineEdit::placeholder {
+    color: #546e7a;
+}
+
+/* ===== Butonlar ===== */
+QPushButton#primary_button {
+    background-color: #1565c0;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    min-height: 40px;
+}
+
+QPushButton#primary_button:hover {
+    background-color: #1976d2;
+}
+
+QPushButton#primary_button:pressed {
+    background-color: #0d47a1;
+}
+
+QPushButton#primary_button:disabled {
+    background-color: #263238;
+    color: #546e7a;
+}
+
+QPushButton#secondary_button {
+    background-color: transparent;
+    color: #4fc3f7;
+    border: 1px solid #4fc3f7;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 13px;
+    min-height: 36px;
+}
+
+QPushButton#secondary_button:hover {
+    background-color: #0d2137;
+}
+
+/* ===== Fotoğraf seçici ===== */
+#photo_picker {
+    background-color: #1e2128;
+    border: 2px dashed #37474f;
+    border-radius: 12px;
+    min-height: 200px;
+}
+
+#photo_picker:hover {
+    border-color: #4fc3f7;
+}
+
+#photo_picker QLabel {
+    color: #546e7a;
+    font-size: 13px;
+}
+
+/* ===== Kaplumbağa bilgi kartı ===== */
+#turtle_card {
+    background-color: #1a2332;
+    border: 1px solid #1565c0;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+#turtle_card QLabel#turtle_name {
+    color: #4fc3f7;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#turtle_card QLabel#turtle_species {
+    color: #90a4ae;
+    font-size: 13px;
+}
+
+#turtle_card QLabel#info_key {
+    color: #607d8b;
+    font-size: 12px;
+}
+
+#turtle_card QLabel#info_value {
+    color: #e0e6f0;
+    font-size: 12px;
+}
+
+/* ===== Güven skoru progress bar ===== */
+QProgressBar {
+    background-color: #1e2128;
+    border: none;
+    border-radius: 6px;
+    height: 12px;
+    text-align: center;
+    color: transparent;
+}
+
+QProgressBar::chunk {
+    border-radius: 6px;
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:1, y2:0,
+        stop:0 #1565c0, stop:1 #4fc3f7
+    );
+}
+
+QProgressBar[warning="true"]::chunk {
+    background-color: #f57c00;
+}
+
+/* ===== Durum etiketi ===== */
+#status_label {
+    color: #546e7a;
+    font-size: 12px;
+}
+
+/* ===== Eşleşme sonuç rozeti ===== */
+#badge_match {
+    background-color: #1b5e20;
+    color: #a5d6a7;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+#badge_no_match {
+    background-color: #b71c1c;
+    color: #ef9a9a;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* ===== Uyarı / Hata mesajları ===== */
+#warning_box {
+    background-color: #1a1200;
+    border: 1px solid #f57c00;
+    border-radius: 8px;
+    padding: 10px;
+    color: #ffcc80;
+    font-size: 12px;
+}
+
+#error_box {
+    background-color: #1a0000;
+    border: 1px solid #b71c1c;
+    border-radius: 8px;
+    padding: 10px;
+    color: #ef9a9a;
+    font-size: 12px;
+}
+
+/* ===== Scroll area ===== */
+QScrollArea {
+    border: none;
+    background-color: transparent;
+}
+
+QScrollBar:vertical {
+    background-color: #1e2128;
+    width: 8px;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #37474f;
+    border-radius: 4px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #546e7a;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+/* ===== Separator ===== */
+QFrame[frameShape="4"],
+QFrame[frameShape="5"] {
+    color: #263238;
+}
