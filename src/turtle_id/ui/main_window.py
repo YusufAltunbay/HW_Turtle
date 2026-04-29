@@ -25,6 +25,7 @@ from PySide6.QtWidgets import (
 from turtle_id.agents.ui_agent import UIAgent
 from turtle_id.container import AppContainer
 from turtle_id.core.use_cases.verify_turtle import VerifyTurtleResponse
+from turtle_id.ui.views.history_view import HistoryView
 from turtle_id.ui.views.register_view import RegisterView
 from turtle_id.ui.views.result_view import ResultView
 from turtle_id.ui.views.verify_view import VerifyView
@@ -32,6 +33,7 @@ from turtle_id.ui.views.verify_view import VerifyView
 _PAGE_REGISTER = 0
 _PAGE_VERIFY = 1
 _PAGE_RESULT = 2
+_PAGE_HISTORY = 3
 
 _QSS_PATH = Path(__file__).parent / "styles" / "main.qss"
 
@@ -59,6 +61,8 @@ class MainWindow(QMainWindow):
             event_bus=self._container.event_bus,
             register_use_case=self._container.register_turtle_use_case,
             verify_use_case=self._container.verify_turtle_use_case,
+            image_agent=self._container.image_agent,
+            data_agent=self._container.data_agent,
         )
         agent.start()
         return agent
@@ -92,10 +96,12 @@ class MainWindow(QMainWindow):
         self._register_view = RegisterView(self._ui_agent)
         self._verify_view = VerifyView(self._ui_agent)
         self._result_view = ResultView()
+        self._history_view = HistoryView(self._container.data_agent)
 
         self._stack.addWidget(self._wrap(self._register_view))  # 0
         self._stack.addWidget(self._wrap(self._verify_view))    # 1
         self._stack.addWidget(self._wrap(self._result_view))    # 2
+        self._stack.addWidget(self._history_view)               # 3
 
         content_layout.addWidget(self._stack)
         root.addWidget(content_wrapper, stretch=1)
@@ -128,6 +134,7 @@ class MainWindow(QMainWindow):
             ("➕  Kaplumbağa Kayıt", _PAGE_REGISTER),
             ("🔍  Kaplumbağa Tanı", _PAGE_VERIFY),
             ("📋  Son Sonuç", _PAGE_RESULT),
+            ("📁  Tüm Kayıtlar", _PAGE_HISTORY),
         ]
         for label, page_idx in nav_items:
             btn = QPushButton(label)

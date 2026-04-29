@@ -168,6 +168,11 @@ class AppContainer:
         return self._data_agent
 
     @property
+    def image_agent(self) -> ImageAgent:
+        self._assert_initialized()
+        return self._image_agent
+
+    @property
     def event_bus(self) -> EventBus:
         self._assert_initialized()
         return self._event_bus

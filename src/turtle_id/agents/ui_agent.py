@@ -12,6 +12,8 @@ from __future__ import annotations
 from PySide6.QtCore import QObject, Signal
 
 from turtle_id.agents.base_agent import BaseAgent
+from turtle_id.agents.data_agent import DataAgent
+from turtle_id.agents.image_agent import ImageAgent
 from turtle_id.core.models.match_result import MatchResult
 from turtle_id.core.models.turtle import Turtle
 from turtle_id.core.use_cases.register_turtle import (
@@ -54,10 +56,14 @@ class UIAgent(BaseAgent):
         event_bus: EventBus,
         register_use_case: RegisterTurtleUseCase,
         verify_use_case: VerifyTurtleUseCase,
+        image_agent: ImageAgent | None = None,
+        data_agent: DataAgent | None = None,
     ) -> None:
         super().__init__(event_bus)
         self._register_use_case = register_use_case
         self._verify_use_case = verify_use_case
+        self._image_agent = image_agent
+        self._data_agent = data_agent
         self.signals = UIAgentSignals()
 
     @property
@@ -89,6 +95,22 @@ class UIAgent(BaseAgent):
         worker.start()
         self._active_workers = getattr(self, "_active_workers", [])
         self._active_workers.append(worker)  # GC'den koruma
+
+    def request_add_photo(self, turtle_id: str, photo_path: str) -> None:
+        """
+        Mevcut kaplumbağaya ek fotoğraf/embedding ekle.
+        """
+        from turtle_id.ui.workers import AddPhotoWorker  # noqa: PLC0415
+        self.signals.processing_started.emit("Fotoğraf ekleniyor...")
+        worker = AddPhotoWorker(turtle_id, photo_path, self._image_agent, self._data_agent)
+        worker.signals.finished.connect(lambda r: (
+            self.signals.processing_finished.emit(),
+            self.signals.registration_completed.emit(r),
+        ))
+        worker.signals.error.connect(self._on_error)
+        worker.start()
+        self._active_workers = getattr(self, "_active_workers", [])
+        self._active_workers.append(worker)
 
     def request_verification(self, photo_path: str) -> None:
         """
