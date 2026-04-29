@@ -28,12 +28,14 @@ from turtle_id.core.use_cases.verify_turtle import VerifyTurtleResponse
 from turtle_id.ui.views.history_view import HistoryView
 from turtle_id.ui.views.register_view import RegisterView
 from turtle_id.ui.views.result_view import ResultView
+from turtle_id.ui.views.settings_view import SettingsView
 from turtle_id.ui.views.verify_view import VerifyView
 
 _PAGE_REGISTER = 0
-_PAGE_VERIFY = 1
-_PAGE_RESULT = 2
-_PAGE_HISTORY = 3
+_PAGE_VERIFY   = 1
+_PAGE_RESULT   = 2
+_PAGE_HISTORY  = 3
+_PAGE_SETTINGS = 4
 
 _QSS_PATH = Path(__file__).parent / "styles" / "main.qss"
 
@@ -98,10 +100,13 @@ class MainWindow(QMainWindow):
         self._result_view = ResultView()
         self._history_view = HistoryView(self._container.data_agent)
 
+        self._settings_view = SettingsView(self._container.config_agent)
+
         self._stack.addWidget(self._wrap(self._register_view))  # 0
         self._stack.addWidget(self._wrap(self._verify_view))    # 1
         self._stack.addWidget(self._wrap(self._result_view))    # 2
         self._stack.addWidget(self._history_view)               # 3
+        self._stack.addWidget(self._wrap(self._settings_view))  # 4
 
         content_layout.addWidget(self._stack)
         root.addWidget(content_wrapper, stretch=1)
@@ -133,8 +138,9 @@ class MainWindow(QMainWindow):
         nav_items = [
             ("➕  Kaplumbağa Kayıt", _PAGE_REGISTER),
             ("🔍  Kaplumbağa Tanı", _PAGE_VERIFY),
-            ("📋  Son Sonuç", _PAGE_RESULT),
-            ("📁  Tüm Kayıtlar", _PAGE_HISTORY),
+            ("📋  Son Sonuç",        _PAGE_RESULT),
+            ("📁  Tüm Kayıtlar",    _PAGE_HISTORY),
+            ("⚙️  Ayarlar",          _PAGE_SETTINGS),
         ]
         for label, page_idx in nav_items:
             btn = QPushButton(label)

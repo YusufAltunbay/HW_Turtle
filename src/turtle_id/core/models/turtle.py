@@ -5,7 +5,7 @@ Veritabanı veya UI detayı içermez; saf iş mantığı nesnesidir.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from uuid import UUID, uuid4
 
 from turtle_id.core.models.embedding import Embedding
@@ -31,7 +31,7 @@ class Turtle:
     id: UUID = field(default_factory=uuid4)
     species: str = ""
     notes: str = ""
-    registration_date: datetime = field(default_factory=datetime.utcnow)
+    registration_date: datetime = field(default_factory=lambda: datetime.now(timezone.utc).replace(tzinfo=None))
     embeddings: list[Embedding] = field(default_factory=list)
 
     def add_embedding(self, embedding: Embedding) -> None:

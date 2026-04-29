@@ -5,7 +5,7 @@ Bir fotoğraftan çıkarılan özellik vektörünü ve meta verisini tutar.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from uuid import UUID, uuid4
 
 import numpy as np
@@ -29,7 +29,7 @@ class Embedding:
     vector: np.ndarray
     photo_path: str
     model_name: str = "efficientnet_b0"
-    captured_at: datetime = field(default_factory=datetime.utcnow)
+    captured_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc).replace(tzinfo=None))
     id: UUID = field(default_factory=uuid4)
 
     @property

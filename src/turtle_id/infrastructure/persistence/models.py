@@ -7,7 +7,7 @@ dönüşüm sqlite_turtle_repo.py içindeki mapper metodlarında yapılır.
 """
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 from sqlalchemy import (
     Boolean,
@@ -40,7 +40,7 @@ class TurtleORM(Base):
     notes: Mapped[str] = mapped_column(Text, default="")
     primary_photo_path: Mapped[str] = mapped_column(Text, nullable=False)
     registration_date: Mapped[datetime] = mapped_column(
-        DateTime, nullable=False, default=datetime.utcnow
+        DateTime, nullable=False, default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
     )
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
 
@@ -74,7 +74,7 @@ class EmbeddingORM(Base):
     photo_path: Mapped[str] = mapped_column(Text, nullable=False)
     model_name: Mapped[str] = mapped_column(String(128), nullable=False)
     captured_at: Mapped[datetime] = mapped_column(
-        DateTime, nullable=False, default=datetime.utcnow
+        DateTime, nullable=False, default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
     )
 
     turtle: Mapped[TurtleORM] = relationship("TurtleORM", back_populates="embeddings")
@@ -105,7 +105,7 @@ class VerificationLogORM(Base):
     threshold_used: Mapped[float] = mapped_column(Float, nullable=False)
     is_match: Mapped[bool] = mapped_column(Boolean, nullable=False)
     verified_at: Mapped[datetime] = mapped_column(
-        DateTime, nullable=False, default=datetime.utcnow
+        DateTime, nullable=False, default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
     )
 
     def __repr__(self) -> str:

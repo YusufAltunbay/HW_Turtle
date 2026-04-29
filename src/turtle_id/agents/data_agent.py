@@ -115,7 +115,7 @@ class DataAgent(BaseAgent):
         try:
             from turtle_id.infrastructure.persistence.models import VerificationLogORM  # noqa: PLC0415
             from uuid import uuid4  # noqa: PLC0415
-            from datetime import datetime  # noqa: PLC0415
+            from datetime import datetime, timezone  # noqa: PLC0415
 
             # Session factory doğrudan erişim — repository'nin private session factory'sini kullan
             if hasattr(self._repository, "_session_factory"):
@@ -130,7 +130,7 @@ class DataAgent(BaseAgent):
                         confidence_score=result.confidence,
                         threshold_used=result.threshold_used,
                         is_match=result.is_match,
-                        verified_at=datetime.utcnow(),
+                        verified_at=datetime.now(timezone.utc).replace(tzinfo=None),
                     )
                     session.add(log)
                     session.commit()
