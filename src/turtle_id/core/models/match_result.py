@@ -57,5 +57,5 @@ class MatchResult:
         return (
             f"MatchResult({status}, score={self.similarity_score:.4f}, "
             f"threshold={self.threshold_used:.2f}, "
-            f"turtle={self.matched_turtle_id!s:.8 if self.matched_turtle_id else 'None'})"
+            f"turtle={str(self.matched_turtle_id)[:8] if self.matched_turtle_id else 'None'})"
         )
