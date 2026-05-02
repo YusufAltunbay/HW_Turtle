@@ -1,0 +1,167 @@
+[
+  {
+    "taxon": "Chelonia mydas",
+    "common_name": "Yesil Deniz Kaplumbagasi",
+    "taxon_id": 39659,
+    "observation_id": 15313522,
+    "inat_url": "https://www.inaturalist.org/observations/15313522",
+    "photo_license": "cc-by-nc",
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Chelonia_mydas\\photo_01.jpg",
+    "attribution": "kevinlaurie",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Chelonia mydas",
+    "common_name": "Yesil Deniz Kaplumbagasi",
+    "taxon_id": 39659,
+    "observation_id": 15313522,
+    "inat_url": "https://www.inaturalist.org/observations/15313522",
+    "photo_license": "cc-by-nc",
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Chelonia_mydas\\photo_02.jpg",
+    "attribution": "kevinlaurie",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Chelonia mydas",
+    "common_name": "Yesil Deniz Kaplumbagasi",
+    "taxon_id": 39659,
+    "observation_id": 15313522,
+    "inat_url": "https://www.inaturalist.org/observations/15313522",
+    "photo_license": "cc-by-nc",
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Chelonia_mydas\\photo_03.jpg",
+    "attribution": "kevinlaurie",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Caretta caretta",
+    "common_name": "Loggerbalik",
+    "taxon_id": 39665,
+    "observation_id": 185109394,
+    "inat_url": "https://www.inaturalist.org/observations/185109394",
+    "photo_license": null,
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Caretta_caretta\\photo_01.jpg",
+    "attribution": "titouan_roguet",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Caretta caretta",
+    "common_name": "Loggerbalik",
+    "taxon_id": 39665,
+    "observation_id": 185109394,
+    "inat_url": "https://www.inaturalist.org/observations/185109394",
+    "photo_license": null,
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Caretta_caretta\\photo_02.jpg",
+    "attribution": "titouan_roguet",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Caretta caretta",
+    "common_name": "Loggerbalik",
+    "taxon_id": 39665,
+    "observation_id": 185109394,
+    "inat_url": "https://www.inaturalist.org/observations/185109394",
+    "photo_license": null,
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Caretta_caretta\\photo_03.jpg",
+    "attribution": "titouan_roguet",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Dermochelys coriacea",
+    "common_name": "Deri Sirti",
+    "taxon_id": 39677,
+    "observation_id": 340140481,
+    "inat_url": "https://www.inaturalist.org/observations/340140481",
+    "photo_license": "cc-by-nc",
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Dermochelys_coriacea\\photo_01.jpg",
+    "attribution": "marine_life_kayaker",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Dermochelys coriacea",
+    "common_name": "Deri Sirti",
+    "taxon_id": 39677,
+    "observation_id": 340140481,
+    "inat_url": "https://www.inaturalist.org/observations/340140481",
+    "photo_license": "cc-by-nc",
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Dermochelys_coriacea\\photo_02.jpg",
+    "attribution": "marine_life_kayaker",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Dermochelys coriacea",
+    "common_name": "Deri Sirti",
+    "taxon_id": 39677,
+    "observation_id": 340140481,
+    "inat_url": "https://www.inaturalist.org/observations/340140481",
+    "photo_license": "cc-by-nc",
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Dermochelys_coriacea\\photo_03.jpg",
+    "attribution": "marine_life_kayaker",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Trachemys scripta",
+    "common_name": "Kirmizi Kulakli Tatli Su Kaplumbagasi",
+    "taxon_id": 39782,
+    "observation_id": 33742782,
+    "inat_url": "https://www.inaturalist.org/observations/33742782",
+    "photo_license": "cc-by-nc",
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Trachemys_scripta\\photo_01.jpg",
+    "attribution": "nanofishology",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Trachemys scripta",
+    "common_name": "Kirmizi Kulakli Tatli Su Kaplumbagasi",
+    "taxon_id": 39782,
+    "observation_id": 33742782,
+    "inat_url": "https://www.inaturalist.org/observations/33742782",
+    "photo_license": "cc-by-nc",
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Trachemys_scripta\\photo_02.jpg",
+    "attribution": "nanofishology",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Trachemys scripta",
+    "common_name": "Kirmizi Kulakli Tatli Su Kaplumbagasi",
+    "taxon_id": 39782,
+    "observation_id": 33742782,
+    "inat_url": "https://www.inaturalist.org/observations/33742782",
+    "photo_license": "cc-by-nc",
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Trachemys_scripta\\photo_03.jpg",
+    "attribution": "nanofishology",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Terrapene carolina",
+    "common_name": "Dogu Kutu Kaplumbagasi",
+    "taxon_id": 39814,
+    "observation_id": 12051904,
+    "inat_url": "https://www.inaturalist.org/observations/12051904",
+    "photo_license": "cc-by",
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Terrapene_carolina\\photo_01.jpg",
+    "attribution": "mellis",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Terrapene carolina",
+    "common_name": "Dogu Kutu Kaplumbagasi",
+    "taxon_id": 39814,
+    "observation_id": 12051904,
+    "inat_url": "https://www.inaturalist.org/observations/12051904",
+    "photo_license": "cc-by",
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Terrapene_carolina\\photo_02.jpg",
+    "attribution": "mellis",
+    "note": "same_individual"
+  },
+  {
+    "taxon": "Terrapene carolina",
+    "common_name": "Dogu Kutu Kaplumbagasi",
+    "taxon_id": 39814,
+    "observation_id": 12051904,
+    "inat_url": "https://www.inaturalist.org/observations/12051904",
+    "photo_license": "cc-by",
+    "local_path": "C:\\Users\\Yusuf\\Desktop\\HW_Turtle\\data\\real_photos\\Terrapene_carolina\\photo_03.jpg",
+    "attribution": "mellis",
+    "note": "same_individual"
+  }
+]
