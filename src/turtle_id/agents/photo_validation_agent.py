@@ -7,6 +7,7 @@ Sorumluluk:
   - Bozuk dosya tespiti (OpenCV okuma testi)
   - Bulanıklık uyarısı (Laplacian variance)
   - Aşırı karanlık/parlak görüntü uyarısı
+  - Kaplumbağa tespiti (TurtleClassifier ile — opsiyonel)
 
 Ayrı ajan olma nedeni: ImageAgent sadece embedding üretmekten sorumlu (SRP).
 Validasyon, kullanıcıya erken ve açıklayıcı geri bildirim verir.
@@ -15,12 +16,16 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from loguru import logger
 
 from turtle_id.agents.base_agent import BaseAgent
 from turtle_id.shared.event_bus import EventBus
 from turtle_id.shared.events import EventType
+
+if TYPE_CHECKING:
+    from turtle_id.infrastructure.vision.turtle_classifier import TurtleClassifier
 
 _SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp", ".tiff"}
 _MIN_WIDTH = 100
@@ -54,11 +59,18 @@ class PhotoValidationAgent(BaseAgent):
     Fotoğrafı işlem hattına sokmadan önce kalite ve geçerlilik kontrolü yapar.
 
     Args:
-        event_bus: Paylaşılan EventBus.
+        event_bus:          Paylaşılan EventBus.
+        turtle_classifier:  Kaplumbağa tespit sınıflandırıcısı (opsiyonel).
+                            Verilmezse kaplumbağa kontrolü atlanır.
     """
 
-    def __init__(self, event_bus: EventBus) -> None:
+    def __init__(
+        self,
+        event_bus: EventBus,
+        turtle_classifier: "TurtleClassifier | None" = None,
+    ) -> None:
         super().__init__(event_bus)
+        self._turtle_classifier = turtle_classifier
 
     @property
     def name(self) -> str:
@@ -90,6 +102,9 @@ class PhotoValidationAgent(BaseAgent):
             self._check_dimensions(path, result)
             self._check_blur(path, result)
             self._check_brightness(path, result)
+
+        if result.is_valid and self._turtle_classifier is not None:
+            self._check_is_turtle(path, result)
 
         if result.is_valid:
             self._publish(EventType.PHOTO_VALID, {"path": image_path, "warnings": result.warnings})
@@ -179,3 +194,28 @@ class PhotoValidationAgent(BaseAgent):
                     )
         except Exception:
             pass
+
+    def _check_is_turtle(self, path: Path, result: ValidationResult) -> None:
+        """
+        Fotoğrafın kaplumbağa içerip içermediğini sınıflandırıcı ile kontrol eder.
+        Kaplumbağa tespit edilemezse kayıta izin vermez (hata ekler).
+        """
+        try:
+            is_turtle, confidence = self._turtle_classifier.is_turtle(str(path))
+            if is_turtle:
+                logger.debug(
+                    f"PhotoValidationAgent: kaplumbağa tespit edildi — "
+                    f"güven={confidence:.3f} ({path.name})"
+                )
+            else:
+                logger.warning(
+                    f"PhotoValidationAgent: kaplumbağa tespit edilemedi — "
+                    f"güven={confidence:.3f} ({path.name})"
+                )
+                result.add_error(
+                    f"Bu fotoğrafta kaplumbağa tespit edilemedi "
+                    f"(kaplumbağa skoru: %{confidence * 100:.1f}). "
+                    "Lütfen net bir kaplumbağa fotoğrafı yükleyin."
+                )
+        except Exception as exc:
+            logger.warning(f"PhotoValidationAgent: kaplumbağa kontrolü başarısız — {exc}")

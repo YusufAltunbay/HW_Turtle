@@ -32,6 +32,7 @@ from turtle_id.infrastructure.persistence.database import (
 from turtle_id.infrastructure.persistence.sqlite_turtle_repo import SQLiteTurtleRepository
 from turtle_id.infrastructure.vision.opencv_preprocessor import OpenCVPreprocessor
 from turtle_id.infrastructure.vision.timm_extractor import TimmEfficientNetExtractor
+from turtle_id.infrastructure.vision.turtle_classifier import TurtleClassifier
 from turtle_id.shared.event_bus import EventBus
 
 
@@ -86,9 +87,13 @@ class AppContainer:
         preprocessor = OpenCVPreprocessor()
         extractor = TimmEfficientNetExtractor()
         matcher = CosineMatcher()
+        turtle_classifier = TurtleClassifier()
 
         # 5. Ajanlar
-        self._validation_agent = PhotoValidationAgent(self._event_bus)
+        self._validation_agent = PhotoValidationAgent(
+            self._event_bus,
+            turtle_classifier=turtle_classifier,
+        )
         self._image_agent = ImageAgent(self._event_bus, preprocessor, extractor)
         self._matching_agent = MatchingAgent(
             event_bus=self._event_bus,
